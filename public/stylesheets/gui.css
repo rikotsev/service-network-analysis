@@ -1,0 +1,12 @@
+
+.graph-container {
+    border: 1px solid black;
+}
+
+main {
+    margin-top: 100px;
+}
+
+#sigma-container {
+    height: 600px;
+}

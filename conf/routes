@@ -1,0 +1,38 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# A home controller that loads dashboard connected urls
+GET     /                           controllers.HomeController.dashboard()
+GET     /async/sumStat              controllers.HomeController.sumStatistics()
+
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+GET     /example/basic              controllers.ExampleController.printBasicInfo()
+GET     /example/xml.gexf           controllers.ExampleController.printXml()
+GET     /example/view               controllers.ExampleController.printHtml()
+GET     /example/read               controllers.ExampleController.testFileRead()
+
+# AdminController routes - instantiate actions that take care of certain administrative tasks and write to the db
+GET     /admin/nodes/write          controllers.AdminController.readNodesFromFileAndWriteToDB()
+GET     /admin/edges/write          controllers.AdminController.readEdgesFromFileAndWriteToDB()
+
+# XMLContentController routes - provide xml for visualizations of graphs
+GET     /xml/simple                 controllers.XMLContentController.simpleGraph()
+POST    /xml/gexf                   controllers.XMLContentController.gexfGraph()
+POST    /xml/graphml                controllers.XMLContentController.graphmlGraph()
+
+# TXTContentController routes - provide txt for graph analysis
+POST    /txt/specific               controllers.TXTContentController.specific()
+
+# GraphGuiController routes - provide html in which graphs are visualized
+GET     /display/graph              controllers.GraphGuiController.simpleGraph()
+GET     /display/graph/form         controllers.GraphGuiController.graphForm()
+POST    /display/graph/form         controllers.GraphGuiController.visualizeGraph()
+POST    /display/graph/details      controllers.GraphGuiController.graphData()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

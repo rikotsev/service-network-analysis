@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <gexf xmlns="http://www.gephi.org/gexf" xmlns:viz="http://www.gephi.org/gexf/viz">
+            <graph mode="static" defaultedgetype="directed">
+                <nodes>
+                    <node id="a" label="Joro" x="0" y="0" size="1">
+                        <viz:color b="51" g="51" r="255"/>
+                        <viz:position x="0" y="0" z="0"/>
+                        <viz:size value="3.6"/>
+                    </node>
+                    <node id="b" label="Stefan" x="2" y="3" size="2">
+                        <viz:color b="51" g="51" r="255"/>
+                        <viz:position x="2" y="3" z="0"/>
+                        <viz:size value="10.138098"/>
+                    </node>
+                    <node id="c" label="Gergana">
+                        <viz:color b="51" g="51" r="255"/>
+                    	<viz:position x="4" y="2" z="0.0"/>
+                        <viz:size value="3.600933"/>
+                    </node>
+                </nodes>
+                <edges>
+                      <edge source="b" target="a" label="friend"></edge>
+                      <edge source="c" target="b" label="follow"></edge>
+                      <edge source="b" target="c" label="follow"></edge>
+                </edges>
+            </graph>
+        </gexf>

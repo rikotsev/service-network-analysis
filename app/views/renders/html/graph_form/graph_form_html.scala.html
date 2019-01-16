@@ -1,0 +1,48 @@
+@(element: gui.html.GraphForm)
+
+<form method="POST" action="@element.getPostUrl()">
+    <div class="form-group">
+        <label for="itemCodeSelect">Item code:</label>
+        <select class="form-control" id="itemCodeSelect" name="itemCode">
+            @element.allItemCodes().map { code =>
+
+              <option value="@code">@code</option>
+
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="yearSelect">Year:</label>
+        <select class="form-control" id="yearSelect" name="year">
+            @element.allYears().map { year =>
+
+              <option value="@year">@year</option>
+
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="flowTypeSelect">Flow type:</label>
+        <select class="form-control" id="flowTypeSelect" name="flowType">
+            @element.flowTypes().map { ft =>
+
+              <option value="@ft">@ft</option>
+
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="actionTypeSelect">Action type:</label>
+        <select class="form-control" id="actionTypeSelect" name="actionType">
+            @element.actionTypes().map { at =>
+
+              <option value="@at">@at</option>
+
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

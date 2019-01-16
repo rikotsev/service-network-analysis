@@ -1,0 +1,22 @@
+@(element: gui.txt.GraphAsGML)
+
+graph [
+
+    directed 1
+
+    @element.getNodes().map { node =>
+        node [
+            id @node.getId()
+            label "@node.getLabel()"
+        ]
+    }
+
+    @element.getEdges().map { edge =>
+        edge [
+            source @edge.getSource()
+            target @edge.getTarget()
+            weight @edge.getValue()
+        ]
+    }
+
+]

@@ -1,0 +1,50 @@
+@import gui.html.graphdetails.GraphDetailsFrame
+@(element: GraphDetailsFrame)
+
+@visualizationFrame = {
+    <div clas="row">
+        <div class="col-sm-12">
+            <h2>Graph Visualization</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" id="sigma-container">
+            <img src="@routes.Assets.versioned("images/gui/loading.gif")" alt="Loading..."/>
+        </div>
+    </div>
+    @element.getGraphForm().render()
+    <script type="text/javascript">
+        fnFillGraphFrameViz({
+            url: '@element.getUrl()',
+            containerId: 'sigma-container',
+        });
+    </script>
+}
+
+@dataFrame = {
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Graph data</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" id="details-container">
+            <img src="@routes.Assets.versioned("images/gui/loading.gif")" alt="Loading..."/>
+        </div>
+    </div>
+    @element.getGraphForm().render()
+    <script type="text/javascript">
+        fnFillGraphFrameData({
+            url: '@element.getUrl()',
+            containerId: 'details-container'
+        });
+    </script>
+}
+
+@if(element.isVisualization()) {
+    @visualizationFrame
+}
+
+@if(element.isData()) {
+    @dataFrame
+}

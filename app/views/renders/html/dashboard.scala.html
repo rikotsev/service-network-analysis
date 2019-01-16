@@ -1,0 +1,24 @@
+@(element: gui.html.Dashboard)
+
+<div id="dashboard">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Dashboard@** TODO translate **@</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Item code / Year / Total statistics</h2>
+        </div>
+        <div class="col-sm-12" id="@element.getIdSumStatistics()">
+            <img src="@routes.Assets.versioned("images/gui/loading.gif")" alt="Loading" />
+        </div>
+        <script>
+            $.get({
+                url: '@element.getUrlSumStatistics()'
+            }).done(function (data) {
+                $('#@element.getIdSumStatistics()').html(data);
+            });
+        </script>
+    </div>
+</div>

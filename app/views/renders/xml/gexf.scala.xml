@@ -1,0 +1,24 @@
+@(element: gui.xml.GraphAsGEXF)
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gephi.org/gexf" xmlns:viz="http://www.gephi.org/gexf/viz">
+    <graph mode="static" defaultedgetype="directed">
+        <nodes>
+            @element.getNodes().map { node =>
+            <node id="@node.getId()" label="@node.getLabel()" x="@element.getRandomInt()" y="@element.getRandomInt()">
+                <viz:color b="255" g="51" r="51"/>
+                <viz:position x="@element.getRandomInt()" y="@element.getRandomInt()" z="0"/>
+                <viz:size value="@node.getSize()"/>
+            </node>
+            }
+        </nodes>
+        <edges>
+            @element.getEdges().map { edge =>
+            <edge source="@edge.getSource()" target="@edge.getTarget()" label="@edge.getLabel()" weight="@edge.getValue()">
+                <viz:color b="51" g="51" r="255" />
+            </edge>
+            }
+        </edges>
+    </graph>
+</gexf>

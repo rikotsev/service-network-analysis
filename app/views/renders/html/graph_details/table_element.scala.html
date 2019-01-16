@@ -1,0 +1,48 @@
+@(element: gui.html.graphdetails.TableElement[_])
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3>@element.getCaption()</h3>
+    </div>
+    <div class="col-sm-12">
+        <table id="@element.getDomId()">
+            <thead>
+                <tr>
+                    <th>@element.getColumnNames()(0)</th>
+                    <th>Country Name</th>
+                    <th>@element.getColumnNames()(1)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @element.getCountries().map { entry =>
+                    <tr>
+                        <td>
+                            @entry.getKey()
+                        </td>
+                        <td>
+                        @entry.getValue()
+                        </td>
+                        <td>
+                        @element.getDataValue(entry.getKey()).orElse(null)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @if(element.isAverage()) {
+        <div class="col-sm-12">
+            <p>Average: @element.average()</p>
+        </div>
+    }
+</div>
+<script>
+        $(document).ready(function () {
+            $('#@element.getDomId()').DataTable({
+                dom: 'Bfrtip',
+                buttons:[
+                    'excel'
+                ]
+            });
+        });
+</script>

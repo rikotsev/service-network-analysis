@@ -1,0 +1,50 @@
+@(element: gui.html.Page)
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- BOOTSTRAP, JQUERY, POPPER - EYE CANDY -->
+        <script src="@routes.Assets.versioned("javascripts/jquery/jquery-3.3.1.min.js")" type="application/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/jquery/popper.min.js")" type="application/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/bootstrap/bootstrap.min.js")" type="application/javascript"></script>
+
+        <!-- SIGMA SCRIPTS -->
+        <script src="@routes.Assets.versioned("javascripts/sigma/sigma.min.js")" type="application/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/sigma/sigma.parsers.gexf.min.js")" type="application/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/sigma/sigma.renderers.edgeLabels.min.js")" type="application/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/sigma/sigma.renderers.edgeLabels.min.js")" type="application/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/sigma/sigma.layout.forceAtlas2.min.js")" type="application/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/sigma/sigma.layout.noverlap.min.js")" type="application/javascript"></script>
+
+        <!-- BOOTSTRAP - EYE CANDY -->
+        <link href="@routes.Assets.versioned("stylesheets/bootstrap/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+        <!-- DATATABLES -->
+        <link href="@routes.Assets.versioned("stylesheets/datatables/datatables.min.css")" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/datatables.min.js")" type="application/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/dataTables.buttons.min.js")" type="application/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/buttons.html5.min.js")" type="application/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/buttons.flash.min.js")" type="application/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/buttons.print.min.js")" type="application/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/jszip.min.js")" type="application/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/pdfmake.min.js")" type="application/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/datatables/vfs_fonts.js")" type="application/javascript"></script>
+
+        <!-- Personal Stylesheets -->
+        <link href="@routes.Assets.versioned("stylesheets/gui.css")" rel="stylesheet" type="text/css" />
+
+        <!-- Personal Javascripts -->
+        <script src="@routes.Assets.versioned("javascripts/gui.js")" type="application/javascript"></script>
+    </head>
+    <body>
+        @if(element.getNavbar().isPresent()) {
+            @element.getNavbar().get().render()
+        }
+        <main role="main" class="container-fluid">
+            @element.getContent.render()
+        </main>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+@import gui.html.graphdetails.GraphDetails
+@(element: GraphDetails)
+
+@element.getElements().map { el =>
+        @el.render()
+  <hr>
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Other data</h3>
+    </div>
+    <div class="col-md-12">
+        <ul>
+            @if(element.getStats().edgeDensity().isPresent()) {
+                <li>Edge Density: @element.getStats().edgeDensity().get()</li>
+            }
+            @if(element.getStats().transivityGlobal().isPresent()) {
+                <li>Transitivity global: @element.getStats().transivityGlobal().get()</li>
+            }
+            @if(element.getStats().transivityAverage().isPresent()) {
+                <li>Transitivity average: @element.getStats().transivityAverage().get()</li>
+            }
+            @if(element.getStats().diameter().isPresent()) {
+                <li>Diameter: @element.getStats().diameter().get()</li>
+            }
+        </ul>
+    </div>
+</div>
+

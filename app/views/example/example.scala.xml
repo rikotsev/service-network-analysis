@@ -1,0 +1,20 @@
+@(vertices: List[Array[String]], edges: List[Array[String]])
+
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <gexf xmlns="http://www.gexf.net/1.2draft" version="1.2">
+            <graph mode="static" defaultedgetype="directed">
+                <nodes>
+                @vertices.map { v =>
+                    <node id="@v(0)" label="@v(1)"></node>
+                }
+                </nodes>
+                <edges>
+                    @edges.map { e =>
+                      <edge source="@e(0)" target="@e(1)" label="@e(2)"></edge>
+                    }
+                </edges>
+            </graph>
+        </gexf>
+
+

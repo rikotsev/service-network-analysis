@@ -1,0 +1,15 @@
+SELECT fl.item_code, fl.year, fl.small_sum, fl.full_sum, fl.small_count, fl.full_count, ((fl.small_sum/fl.full_sum) * 100) AS percentage_of_all_sum, ((fl.small_count::decimal/fl.full_count::decimal) * 100) AS percentage_of_all_edges FROM
+(
+    SELECT bl.item_code, bl.year, sum(bl.final_value) AS small_sum, count(bl.final_value) AS small_count, MIN(al.bf_sum) AS full_sum, MIN(al.bf_count) AS full_count 
+	FROM 
+	( 
+        SELECT item_code, year, final_value FROM indexed_edges 
+    ) AS bl
+	LEFT JOIN 
+	( 
+        SELECT item_code, year, sum(final_value) AS bf_sum, count(*) AS bf_count, avg(final_value) AS average FROM indexed_edges GROUP BY item_code, year 
+    ) AS al
+	ON al.item_code = bl.item_code AND al.year = bl.year
+	WHERE bl.final_value > (2 * al.average)
+	GROUP BY bl.item_code, bl.year 
+) AS fl;

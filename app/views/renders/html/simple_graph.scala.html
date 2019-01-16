@@ -1,0 +1,22 @@
+@(element: gui.html.SimpleGraph)
+
+<div id="sigma-container" class="graph-container" style="height: 500px; width: 1000px;">
+        <img src="@routes.Assets.versioned("images/gui/loading.gif")" alt="Loading">
+</div>
+<script>
+    var promiseXMLSrc = $.get({
+        url: '@element.getUrl()'
+    });
+
+    promiseXMLSrc.done(function (data) {
+        sigma.parsers.gexf(
+                data,
+                {
+                    container: 'sigma-container',
+                    drawEdgeLabels: true
+                },
+                function (s) {
+                }
+        );
+    });
+</script>

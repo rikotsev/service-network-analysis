@@ -1,0 +1,30 @@
+@(element: gui.html.SumStatistics)
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+
+                @element.getYears().map { year =>
+
+                  <th>@year</th>
+
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @element.getItemCodes().map { code =>
+              <tr>
+                  <td>@code</td>
+
+                  @element.getYears().map { year =>
+                    <td>
+                        @element.getData().get( code + "_" + year )
+                    </td>
+                  }
+              </tr>
+            }
+        </tbody>
+    </table>
+</div>
